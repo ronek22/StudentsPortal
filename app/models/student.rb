@@ -1,6 +1,7 @@
 class Student < ApplicationRecord
   FIELDS = ["Mathematics", "Physics", "Computer Science"]
 
-  validates :firstname, :lastname, :length => { :in => 3..20 }, :format => { :with => /\A[a-ząćęłńóśźżA-ZĄĆĘŁŃÓŚŹŻ]+\z/, :message => " contain(s) numbers" }
+  validates :firstname, :lastname, :length => { :in => 3..20 }, format: { with: /\A[A-ZĄĆĘŁŃÓŚŹŻ][a-ząćęłńóśźż]+\z/, message: " contain(s) numbers or/and first letter is small" }
+  validates_with PeselValidator
   validates :field, inclusion: FIELDS
 end
