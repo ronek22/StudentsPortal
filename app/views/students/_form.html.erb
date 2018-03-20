@@ -1,38 +1,62 @@
-<%= form_with(model: student, local: true) do |form| %>
+<%= form_with(model: student, local: true, html: {class: 'form-horizontal'}) do |form| %>
   <% if student.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(student.errors.count, "error") %> prohibited this student from being saved:</h2>
-
-      <ul>
-      <% student.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+      <div class="alert fade in alert-danger alert-dismissable"><button aria-hidden="true" class="close" data-dismiss="alert" type="button">×</button>
+        <ul>
+          <% student.errors.full_messages.each do |msg| %>
+            <%= content_tag :li, msg, :id => "error_#{msg}" if msg.is_a?(String) %>
+          <% end %>
+        </ul>
+      </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :firstname %>
-    <%= form.text_field :firstname %>
+
+<!--
+  <% if student.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+      The form contains <%= pluralize(student.errors.count, "error") %>.
+    </div>
+    <ul>
+    <% student.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %> -->
+
+
+  <div class="field form-group">
+    <%= form.label :firstname, class: 'col-sm-2' %>
+    <div class='col-sm-10'>
+      <%= form.text_field :firstname, class: 'form-control' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :lastname %>
-    <%= form.text_field :lastname %>
+  <div class="field form-group">
+    <%= form.label :lastname, class: 'col-sm-2' %>
+    <div class='col-sm-10'>
+      <%= form.text_field :lastname, class: 'form-control' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :pesel %>
-    <%= form.text_field :pesel %>
+  <div class="field form-group">
+    <%= form.label :pesel, class: 'col-sm-2' %>
+    <div class='col-sm-10'>
+      <%= form.text_field :pesel, class: 'form-control' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :field %>
-    <%= form.select :field, options_for_select(Student::FIELDS) %>
+  <div class="field form-group">
+    <%= form.label :field, class: 'col-sm-2' %>
+    <div class='col-sm-10'>
+      <%= form.select :field, options_for_select(Student::FIELDS), class: 'form-control' %>
+    </div>
     <!-- <%= form.text_field :field %> -->
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="actions form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= form.submit %>
+    </div>
   </div>
 <% end %>
