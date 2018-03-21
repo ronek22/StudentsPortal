@@ -5,10 +5,6 @@ class PeselValidator < ActiveModel::Validator
   def validate(record)
     # generator peseli: https://bogus.000webhostapp.com/generatory/all.html
     sPesel = record.pesel
-    if(Student.where(pesel: sPesel).any?)
-      return record.errors.add(:pesel, "is already in database.")
-    end
-
     unless(/\A\d{11}\z/ === sPesel)
       return record.errors.add(:pesel, "must contain 11 digits and only digits.")
     end
