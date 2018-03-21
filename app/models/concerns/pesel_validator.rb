@@ -3,8 +3,12 @@ require 'date'
 class PeselValidator < ActiveModel::Validator
 
   def validate(record)
-    # generator peseli: http://pesel.felis-net.com/oblicz.php?rok=1995&miesiac=12&dzien=30&plec=1
+    # generator peseli: https://bogus.000webhostapp.com/generatory/all.html
     sPesel = record.pesel
+    if(Student.where(pesel: sPesel).any?)
+      return record.errors.add(:pesel, "is already in database.")
+    end
+
     unless(/\A\d{11}\z/ === sPesel)
       return record.errors.add(:pesel, "must contain 11 digits and only digits.")
     end
