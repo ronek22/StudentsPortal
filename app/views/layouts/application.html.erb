@@ -10,9 +10,9 @@
 
   <body>
     <%= render 'shared/navigation' %>
-    <div id="main-container" class="container">
+    <div class="container">
       <div class="row">
-        <div class="col-xs-12">
+        <div class="col-sm">
           <% flash.each do |name, msg| -%>
             <%= content_tag :div, msg, class: "alert alert-#{name}" %>
           <% end -%>
@@ -20,10 +20,14 @@
       </div>
 
       <div class="row">
-        <div class="col-xs-12">
+        <div class="col-sm">
           <%= yield %>
         </div>
       </div>
+      <hr />
+    <footer>
+      <p style="text-align: center;">&copy; 2018. <a href="https://github.com/ronek22" title="My GitHub">Jakub Ronkiewicz</a></p>
+    </footer>
     </div>
   </body>
 </html>

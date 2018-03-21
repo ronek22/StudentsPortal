@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
-
+<h1>Student details</h1>
+<hr>
 <p>
   <strong>Firstname:</strong>
   <%= @student.firstname %>
@@ -19,6 +20,6 @@
   <strong>Field:</strong>
   <%= @student.field %>
 </p>
-
-<%= link_to 'Edit', edit_student_path(@student) %> |
-<%= link_to 'Back', students_path %>
+<%= link_to 'Back', students_path, class: 'btn btn-outline-info btn-sm' %>
+<%= link_to 'Edit', edit_student_path(@student), class: 'btn btn-info btn-sm' %>
+<%= link_to 'Destroy', @student, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %>
