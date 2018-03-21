@@ -5,6 +5,7 @@
   <li class="nav-item"><%= link_to 'New student', new_student_path, class: 'nav-link active' %></li>
 </ul>
 
-<%= render 'form', student: @student %>
 
-<%= link_to 'Back', students_path %>
+<%= render 'form', student: @student %>
+<hr>
+<%= link_to 'Back', students_path, class: 'inline btn btn-outline-info btn-sm' %>
