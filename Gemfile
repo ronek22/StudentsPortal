@@ -16,6 +16,8 @@ gem 'jquery-rails'
 gem 'bootstrap', '~> 4.0.0'
 gem 'bootstrap_form'
 gem 'autoprefixer-rails'
+# gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate-bootstrap4'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
