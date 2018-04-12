@@ -1,7 +1,11 @@
 <nav class="navbar navbar-dark bg-dark" role="navigation">
   <div class="container">
-    <div class="navbar-header">
       <a class="navbar-brand" href="/">Student's Portal</a>
+      <div class="navbar-brand pull-right">
+      <%= form_tag(students_path, :method => "get", class: 'input-group') do %>
+        <%= text_field_tag :term, params[:term], placeholder: "Search students", class: 'form-control' %>
+        <%= submit_tag "Search", :name => nil, class: 'btn btn-primary' %>
+      <% end %>
     </div>
   </div>
 </nav>
